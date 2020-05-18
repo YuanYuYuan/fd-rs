@@ -7,9 +7,8 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-gnuplot = { path = "../../RustGnuplot/gnuplot" }
-ndarray = { path = "../../ndarray" }
-failure = { path = "../../failure" }
+gnuplot = "^0.0.36"
+ndarray = "^0.13.1"
 num-traits = "^0.2.1"
 itertools = "^0.9.0"
 
