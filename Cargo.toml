@@ -1,5 +1,5 @@
 [package]
-name = "fd-rs"
+name = "fdm"
 version = "0.1.0"
 authors = ["yuanyuyuan <az6980522@gmail.com>"]
 edition = "2018"

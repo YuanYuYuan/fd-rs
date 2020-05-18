@@ -1,8 +1,8 @@
 use gnuplot::{AxesCommon, Figure, Fix};
 use std::f64::consts::PI;
-use fd_rs::base::Simluation;
-use fd_rs::equations::{Advection, InviscidBurger};
-use fd_rs::schemes::{Scheme, Upwind, LaxWendroff};
+use fdm::base::Simluation;
+use fdm::equations::{Advection, InviscidBurger};
+use fdm::schemes::{Scheme, Upwind, LaxWendroff};
 
 fn main() {
     let eq = Advection::<f64> { a: 1.0 };
