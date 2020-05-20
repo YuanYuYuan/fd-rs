@@ -22,11 +22,7 @@ where
     fn default() -> Self {
         let dx = T::from(1e-2).unwrap();
         let cfl = T::from(0.6).unwrap();
-        let space = Array::range(
-            T::from(-5).unwrap(),
-            T::from(5).unwrap(),
-            dx
-        );
+        let space = Array::range(T::from(-5).unwrap(), T::from(5).unwrap(), dx);
         let n = space.len();
         Self {
             dt: cfl * dx,
@@ -72,38 +68,45 @@ where
     }
 
     // get discrete u
-    pub fn get_u(&self, extend: bool) -> Array1<T> {
-        if extend {
+    pub fn get_u(&self, ext: usize) -> Array1<T> {
+        let u = if ext > 0 {
             let u = &self.state;
             let mut v: Vec<T> = u.to_vec();
 
-            // left boundary
-            v.insert(
-                0,
-                match self.boundary {
-                    Some(b) => b[0],          // left source
-                    None => u[u.len() - 1],   // loop to the right
-                },
-            );
+            for i in 0..ext {
+                // left boundary
+                v.insert(
+                    0,
+                    match self.boundary {
+                        Some(b) => b[0],            // left source
+                        None => u[u.len() - 1 - i], // loop to the right
+                    },
+                );
 
-            // right boundary
-            v.push(match self.boundary {
-                Some(b) => b[1],              // right source
-                None => u[0],                 // loop to the left
-            });
+                // right boundary
+                v.push(match self.boundary {
+                    Some(b) => b[1], // right source
+                    None => u[i],    // loop to the left
+                });
+            }
 
             Array1::<T>::from(v)
         } else {
             self.state.clone()
-        }
+        };
+
+        // sanity check
+        assert_eq!(self.len() + 2 * ext, u.len());
+        u
     }
 
     // get discrete f
-    pub fn get_f<E>(&self, eq: &E, extend: bool) -> Array1<T>
-    where
-        E: Equation<T>,
-    {
-        self.get_u(extend).map(|x| eq.f(*x))
+    pub fn get_f(&self, eq: &dyn Equation<T>, ext: usize) -> Array1<T> {
+        let f = self.get_u(ext).map(|x| eq.f(*x));
+
+        // sanity check
+        assert_eq!(self.len() + 2 * ext, f.len());
+        f
     }
 
     pub fn plot(&self, name: &str) {

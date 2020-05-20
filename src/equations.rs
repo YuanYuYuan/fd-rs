@@ -1,6 +1,8 @@
 use crate::base::Equation;
 use num_traits::Float;
 
+
+
 // #[derive(Debug, Copy, Clone)]
 pub struct Advection<T> {
     pub a: T,
