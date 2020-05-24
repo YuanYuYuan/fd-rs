@@ -1,6 +1,7 @@
 use gnuplot::{AxesCommon, Figure};
 use ndarray::{prelude::*, Array1};
 use num_traits::Float;
+use std::fmt::Debug;
 
 pub struct Simluation<T> {
     pub state: Array1<T>,
@@ -10,7 +11,7 @@ pub struct Simluation<T> {
     boundary: Option<[T; 2]>,
 }
 
-pub trait Equation<T> {
+pub trait Equation<T>: Debug {
     fn f(&self, u: T) -> T;
     fn df(&self, u: T) -> T;
 }

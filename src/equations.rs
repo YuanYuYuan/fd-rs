@@ -1,16 +1,15 @@
 use crate::base::Equation;
 use num_traits::Float;
+use std::fmt::Debug;
 
-
-
-// #[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone)]
 pub struct Advection<T> {
     pub a: T,
 }
 
 impl<T> Equation<T> for Advection<T>
 where
-    T: Float,
+    T: Float + Debug,
 {
     fn f(&self, u: T) -> T {
         u * self.a
@@ -21,7 +20,7 @@ where
     }
 }
 
-
+#[derive(Debug, Copy, Clone)]
 pub struct InviscidBurger;
 
 impl<T> Equation<T> for InviscidBurger
