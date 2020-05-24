@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["fdm"] = [{"text":"impl&lt;T&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"fdm/base/struct.Simluation.html\" title=\"struct fdm::base::Simluation\">Simluation</a>&lt;T&gt; <span class=\"where fmt-newline\">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class=\"trait\" href=\"https://docs.rs/num-traits/0.2/num_traits/float/trait.Float.html\" title=\"trait num_traits::float::Float\">Float</a>,&nbsp;</span>","synthetic":false,"types":["fdm::base::Simluation"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

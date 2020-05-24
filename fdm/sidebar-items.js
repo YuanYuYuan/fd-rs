@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["base",""],["equations",""],["schemes",""]],"type":[["BoxedEquation",""],["BoxedFunction",""],["BoxedScheme",""]]});
