@@ -29,7 +29,7 @@ where
     /// $$
     /// v_{j+} = \begin{cases}
     /// \frac{\Delta t}{\Delta x} \frac{f_{j+1} - f_{j}}{u_{j+1}-u_{j}}
-    /// ,& u_{j} != u_{j+1} \\\\
+    /// ,& u_{j} \ne  u_{j+1} \\\\
     /// \frac{\Delta t}{\Delta x} f^{'}(u_j),& u_{j} = u_{j+1}
     /// \end{cases}
     /// $$
@@ -37,7 +37,7 @@ where
     /// $$
     /// v_{j-} = \begin{cases}
     /// \frac{\Delta t}{\Delta x} \frac{f_{j} - f_{j-1}}{u_{j}-u_{j-1}}
-    /// ,& u_{j} != u_{j-1} \\\\
+    /// ,& u_{j} \ne u_{j-1} \\\\
     /// \frac{\Delta t}{\Delta x} f^{'}(u_{j-1}),& u_{j} = u_{j-1}
     /// \end{cases}
     /// $$
